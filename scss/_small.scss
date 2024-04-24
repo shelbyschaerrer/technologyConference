@@ -1,0 +1,241 @@
+/* Prevent adjustments of font size after orientation changes.  */
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    height: 100%;
+  }
+  
+  /*---- apply a natural box layout model to all elements -------*/
+  * {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+:root { --time: 0.707s; }
+
+body {
+    height: 100%;
+    font-family: $defaultFont;
+    font-weight: $normalWeight;
+    color: $fontColor;
+    background-color: whitesmoke;
+}
+
+#headerWrapper {
+    background-color: #c4c1d98f;
+    color: $secondaryColor;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 1rem $gutter;
+    gap: 8px;
+    .hText {
+        h1 {
+            margin: 1rem 0 0 0;
+            font-size: 2rem;
+            font-weight: $normalWeight;
+            color: black;
+        }
+        p {
+            color: #F2071B;
+            margin-top: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+    }
+    
+}
+
+#navWrapper {
+    background-color: #F22738;
+}
+
+nav {
+    button {
+        height: 44px;
+        width: 44px;
+        background: none;
+        border: none;
+        position: relative;
+        .line {
+            position: absolute;
+            height: 2px;
+            width: 60%;
+            background-color: white;
+            left: 20%;
+            transition: all .3s ease;
+        }
+        .top {top: 29%;}
+        .middle {top: 48%;}
+        .bottom {top: 67%;}
+    }
+   ul {
+        display: none;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+   }
+   ul li.active a {background-color: #8685A6}
+   ul li a {
+        display: block;
+        padding: .75rem 2vw;
+        font-size: 1.1rem;
+        color: black;
+        text-decoration: none;
+        border-top: 1px solid black;
+        &:hover {
+            background-color: #C4C1D9;
+        }
+   }
+   .open {
+        display: block;
+   }
+}
+
+.open {
+    .top {
+        transform: rotate(45deg);
+        top: 48%;
+    }
+    .middle, .bottom {
+        transform: rotate(-45deg);
+        top: 48%;
+    }
+}
+
+//video
+.hero {
+    position: relative;
+    div {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgb(0,0,0);
+            background: linear-gradient(45deg, rgba(0,0,0,0.9037990196078431) 0%, rgba(0,0,0,0.1390931372549019) 64%);
+            padding: 10px;
+        h3 {
+            color: white;
+            font-size: 2rem;
+            margin: 1rem 0;
+        }
+        p {
+            color: white;
+        }
+    }
+    video {
+    width: 100%;
+    height: auto;
+    }
+}
+
+main h2 {
+    margin-left: 1rem;
+}
+
+// cards
+.allCards {
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-auto-rows: 1fr;
+    padding: 0rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    margin-bottom: 2rem;
+    //margin-left: auto;
+    //margin-right: auto;
+
+}
+
+.card {
+    margin: 0 auto;
+    perspective: 40rem;
+    display: flex;
+    transition: z-index, transform calc(var(--time) / 4);
+    transition-delay: var(--time), 0s;
+    text-decoration: none;
+    color: black;
+    z-index: 0;
+    width: 100%;
+  &:hover {
+        transition-delay: 0s;
+        z-index: 1;
+  }
+
+  &:active {
+    transform: scale(0.975);
+  }
+}
+
+.cardBody {
+    display: flex;
+    transform-style: preserve-3d;
+    transition: var(--time) transform;
+    border-radius: 0.25rem;
+    flex: 1;
+    margin-left: 5%;
+    .card:hover &, .card:focus & {
+        transform: rotateX(-180deg);
+      }
+}
+
+.cardFront, .cardBack {
+    backface-visibility: hidden;
+    min-width: 90%;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    border-radius: 0.25rem;
+    line-height: 1.5;
+    background-color: white;
+    border: 1px solid red;
+}
+
+.cardBack {
+    transform: rotateX(-180deg) translate(-100%, 0);
+    max-width: 100px;
+}
+
+.cardFront {
+    font-size: 1.5rem;
+    flex-wrap: wrap;
+    h3 {
+        color: red;
+        margin-bottom: 0;
+        margin-top: 1rem;
+    }
+    p {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+    }
+    img {
+        width: 100%;
+    }
+}
+
+.shadow {
+    box-shadow: 0 -1px 1px rgba(0,0,0,0.04), 
+                0 2px 2px rgba(0,0,0,0.04), 
+                0 4px 4px rgba(0,0,0,0.04), 
+                0 8px 8px rgba(0,0,0,0.04),
+                0 16px 16px rgba(0,0,0,0.04); 
+  }
+
+// begin the footer
+
+#footerWrapper {
+    background-color: #F22738;
+}
+
+footer {
+    padding: .5rem $gutter;
+    p {
+        margin: 0;
+        text-align: center;
+        color: white;
+    }
+}
+

@@ -1,0 +1,26 @@
+header {
+    padding: 2rem $gutter;
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+#primaryNav {
+    display: flex;
+}
+
+nav {
+    button {display: none;}
+    ul li {
+        background-color: #F26671;
+    }
+    ul li a {
+        border: none;
+        font-size: 1rem;
+        padding: .9rem 1.2rem;
+        //color: white;
+        text-decoration: none;
+        -webkit-transition: background .3s linear;
+        transition: background .3s linear;
+    }
+}
